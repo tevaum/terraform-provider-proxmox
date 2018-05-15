@@ -402,7 +402,7 @@ func prepareDiskSize(client *pxapi.Client, vmr *pxapi.VmRef, disk_gb float64) er
 	}
 	if disk_gb > clonedConfig.DiskSize {
 		log.Print("[DEBUG] resizing disk")
-		_, err = client.ResizeQemuDisk(vmr, "virtio0", int(disk_gb-clonedConfig.DiskSize))
+		_, err = client.ResizeQemuDisk(vmr, "scsi0", int(disk_gb-clonedConfig.DiskSize))
 		if err != nil {
 			return err
 		}
